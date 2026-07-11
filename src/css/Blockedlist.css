@@ -1,0 +1,40 @@
+
+#unblock_div{
+    position: absolute;
+    display: flex;
+    right: 10%;
+    padding: 0.7%;
+    align-items: center;
+    width: 6.5%;
+    border: 1px solid red;
+    border-radius: 25px;
+    justify-content: space-between;
+}
+
+#unblock_div:active{
+    background-color: rgba(241, 95, 47, 0.2);
+}
+
+#unblock_icon{
+    font-size: x-large;
+    pointer-events: none;
+}
+
+#unblock_p{
+    font-size: large;
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: rgb(232, 11, 11);
+}
+
+@media(max-width:768px){
+
+    #unblock_div{
+        width: 20%;
+        padding: 1.5%;
+    }
+
+    #unblock_p{
+        font-size: 0.9rem;
+    }
+}

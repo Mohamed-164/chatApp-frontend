@@ -1,0 +1,151 @@
+
+
+#Settings_middle{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.Setting_options{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 20%;
+    min-height: 8vh;
+    align-items: center;
+}
+
+.Setting_options:active{
+    background-color: rgb(3, 255, 171,0.200);
+}
+
+.Settings_icon{
+    position: absolute;
+    font-size: x-large;
+    color: var(--APP_COLOR);
+    left: 2%;
+}
+
+.Settings_arrow{
+    position: absolute;
+    font-size: x-large;
+    right: 2%;
+    color: var(--APP_COLOR);
+}
+
+
+.Settings_p{
+    position: absolute;
+    font-family: sans-serif;
+    font-size: large;
+    font-weight: bolder;
+    color: var(--APP_COLOR);
+    left: 5%;
+}
+
+.deactive_p{
+    position: absolute;
+    right: 10%;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    padding: 0.2% 1% 0.2% 1%;
+    border-radius: 5px;
+    background-color: red;
+    color: aliceblue;
+}
+
+#theme_toggle{
+    pointer-events: none;
+    position: absolute;
+    right: 7%;
+    width: 5%;
+    height: 60%;
+    border-radius: 25px;
+    transition: all 0.5s ease;
+}
+
+#theme_span,#visibility_span{
+    display: flex;
+    width: 45%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    left: 2%;
+    top: 1.5%;
+    bottom: 0%;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+#theme_toggle._white{
+    background-color: rgb(54, 69, 79);
+}
+
+#theme_toggle._dark{
+    background-color: whitesmoke;
+}
+
+#theme_span._white,#visibility_span._white{
+    background-color: whitesmoke;
+}
+
+#theme_span._dark{
+    transform: translateX(115%);
+    background-color: rgb(54, 69, 79);
+}
+
+#visibility_span._black{
+    background-color: rgb(54, 69, 79);
+}
+
+#visibility_span.hide{
+    transform: translateX(115%);
+}
+
+#white_theme{
+    font-size: larger;
+    color: rgb(54, 69, 79);
+}
+
+#dark_theme{
+    font-size: larger;
+    color: whitesmoke;
+}
+
+@media(max-width:768px){
+
+    .Settings_icon{
+        font-size: 1.2rem;
+    }
+
+    .Settings_p{
+        font-size: large;
+        left: 10%;
+    }
+
+    .deactive_p{
+        font-size: small;
+        border-radius: 2px;
+    }
+
+    #theme_toggle{
+        width: 15%;
+        height: 45%;
+    }
+
+    #visibility_span{
+        top: 3.2%;
+    }
+
+    #white_theme{
+        font-size: medium;
+    }
+
+    #dark_theme{
+        font-size: medium;
+    }
+
+}

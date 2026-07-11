@@ -1,0 +1,75 @@
+
+#delete_middle{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+}
+
+#note{
+    padding-left: 2%;
+}
+
+#Account_footer{
+    display: flex;
+    position: fixed;
+    bottom: 10%;
+    width: 20%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+#delete_icon{
+    position: absolute;
+    color: aliceblue;
+    font-size: larger;
+    left: 23%;
+    top: 35%;
+}
+
+#delete{
+    background-color: red;
+    width: 60%;
+    border-radius: 5px;
+    color: aliceblue;
+    font-family: sans-serif;
+    font-size: large;
+    font-weight: bold;
+    height: 70%;
+    text-align: center;
+    padding: 4%;
+    padding-left: 10%;
+    border: none;
+}
+
+#delete.activate{
+    background-color: rgb(121, 183, 28);
+}
+#delete:disabled{
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+
+#delete:active{
+    filter: grayscale(50%);
+}
+
+@media(max-width:768px){
+
+    #Account_footer{
+        width: 80%;
+    }
+
+    #delete_icon{
+        font-size: large;
+        left: 25%;
+    }
+
+    #delete{
+        font-size: medium;
+    }
+    
+}

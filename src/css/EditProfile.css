@@ -1,0 +1,190 @@
+
+
+.Edit_div{
+    padding-left: 2%;
+    width: 100%;
+}
+
+h3{
+    font-family: sans-serif;
+}
+
+.file-box{
+    font-family: sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#fileInput{
+    display:none;
+}
+
+label{
+    text-wrap: nowrap;
+    padding:8px 12px;
+    background:#555;
+    color:white;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+#removeprofile{
+    width: 10%;
+    position: relative;
+    display: flex;
+    padding: 1%;
+}
+
+#Edit_removedp{
+    position: absolute;
+    color: aliceblue;
+    left: 13%;
+    bottom: 35%;
+    font-size: large;
+}
+
+
+#Edit_remove{
+    background-color: red;
+    width: 100%;
+    border-radius: 5px;
+    color: aliceblue;
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: 500;
+    text-align: center;
+    padding: 5%;
+    padding-left: 15%;
+    border: none;
+}
+
+#Edit_remove:active{
+    filter: grayscale(60%);
+}
+
+.Edit_textarea{
+    width: 60%;
+    border: none;
+    background: transparent;
+    resize: none;
+    outline: none;
+    border-radius: 6px;
+}
+
+._white{
+    border-bottom: 2px solid #888;
+}
+
+._dark{
+    border-bottom: 2px solid aliceblue;
+}
+
+.Edit_p{
+    padding-left: 2%;
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: lighter;
+}
+
+#Edit_footer{
+    display: flex;
+    position: fixed;
+    bottom: 2%;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+#Edit_icon,#change_pass_icon{
+    position: absolute;
+    left: 45.5%;
+    color: whitesmoke;
+    font-size: larger;
+}
+
+#Edit_profile,#change_pass{
+    border: none;
+    width: 12%;
+    background-color: #0097A7;
+    padding: 1%;
+    padding-left: 1.5%;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-family: sans-serif;
+    font-size: large;
+}
+
+#Edit_profile:disabled,#Edit_remove:disabled{
+    filter: grayscale(70%);
+}
+
+#change_pass_icon{
+    left: 43.5%;
+}
+
+#change_pass{
+    padding: 0.7%;
+    width: 15%;
+}
+
+#Edit_profile:active,#change_pass:active{
+    filter: grayscale(60%);
+}
+
+@media(max-width:768px){
+
+    #fileName{
+        padding: 2.5%;
+        width: 60%;
+    }
+
+    #removeprofile{
+        width: 40%;
+    }
+
+    #Edit_removedp{
+        left: 9%;
+        bottom: 30%;
+    }
+
+    #Edit_remove{
+        padding-right: 0.5%;
+    }
+
+    .Edit_textarea{
+        width: 90%;
+    }
+
+    .Edit_p{
+        font-weight: 600;
+        font-size: small;
+    }
+
+    #Edit_icon{
+        left: 35%;
+        font-size: medium;
+    }
+
+    #Edit_profile{
+        width: 40%;
+        padding: 3%;
+        padding-left: 6%;
+        font-size: medium;
+    }
+
+    #change_pass_icon{
+        left: 25%;
+    }
+
+    #change_pass{
+        width: 60%;
+        padding: 3%;
+        padding-left: 5%;
+        font-size: medium;
+    }
+
+
+}

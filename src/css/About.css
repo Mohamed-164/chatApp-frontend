@@ -1,0 +1,42 @@
+
+.About_div{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 2%;
+    gap: 0.3rem;
+}
+
+.About_icon{
+    font-size: larger;
+    color: #0097A9;
+}
+
+
+#About_middle{
+    padding-bottom: 5%;
+}
+
+#About_footer{
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    top: 100%;
+    width: 100%;
+    min-height: 5%;
+}
+
+#copy_p{
+    font-family: sans-serif;
+}
+
+@media(max-width:768px){
+
+    #copy_p{
+        font-size: xx-small;
+    }
+
+}

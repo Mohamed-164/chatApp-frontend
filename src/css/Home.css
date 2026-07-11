@@ -1,0 +1,391 @@
+
+html{
+    scroll-behavior: smooth;
+}
+
+#root{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#Home_Main{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.Home_layout{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    border-radius: 5px;
+    width: 100%;
+    height: 8%;
+    min-height: 8%;
+    background-color: var(--APP_COLOR);
+}
+
+#Home_header{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0,0.125);
+}
+
+#Home_search{
+    position: absolute;
+    font-weight: bolder;
+    color: white;
+    font-size: x-large;
+    left: 21%;
+    z-index: 1;
+}
+
+.Home_searchActive{
+    fill: var(--APP_COLOR);
+}
+
+#Home_searchBar{
+    position: absolute;
+    display: inline-block;
+    width: 30%;
+    left: 20%;
+    padding: 1%;
+    border: none;
+    border-radius: 25px;
+    transform: scaleX(0);
+    padding-left: 3%;
+    transform-origin: left;
+    transition: all 0.5s ease;
+}
+
+
+#Home_searchBar.active {
+    transform: scaleX(1);
+}
+
+#Home_options{
+    display: flex;
+    position: fixed;
+    pointer-events: none;
+    width: 25%;
+    right: 0;
+    top: 8%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: aliceblue;
+    border-radius: 5px;
+    background-color: var(--APP_COLOR);
+    font-family: sans-serif;
+    font-size: x-large;
+    transition: all 0.2s ease;
+    z-index: 2;
+    transform-origin: top;
+    transform: scaleY(0);
+}
+
+#Home_options.active{
+    pointer-events: auto;
+    transform: scaleY(1);
+}
+
+.options{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+    width: 100%;
+    min-height: 10%;
+}
+
+.options:active{
+    background-color: rgba(160, 198, 152, 0.683);
+}
+
+.options_p{
+    text-wrap: nowrap;
+}
+#Home_middle{
+    width: 100%;
+    padding-bottom: 15%;
+}
+
+#Home_middle.empty{
+    min-height: 80%;
+}
+
+#Home_footer{
+    position: fixed;
+    bottom: 0%;
+    left: 0;
+    justify-content: space-around;
+}
+
+#Home_Headname{
+    user-select: none;
+    color: aliceblue;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+    padding-left: 5%;
+}
+
+#Home_plus{
+    background-color: var(--APP_COLOR);
+    color: aliceblue;
+    font-size: xx-large;
+    position: fixed;
+    bottom: 20%;
+    border-radius: 50%;
+    padding: 1%;
+    right: 5%;
+
+}
+
+#Home_plus:active{
+    filter: grayscale(50%);
+}
+
+#Home_profile{
+    position: absolute;
+    right: 3%;
+    background-color:aliceblue;
+    border-radius: 50%;
+    width: 2.8%;
+    height: 70%;
+}
+
+.Home_icon{
+    color: aliceblue;
+    font-size: larger;
+    font-weight: bolder;
+    transition: all 0.3s ease;
+}
+
+#Home_notify_number{
+    position: absolute;
+    pointer-events: none;
+    background-color: red;
+    display: flex;
+    right: 11.3%;
+    top: 20%;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    font-size: 12px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    color: aliceblue;
+    transition: all 0.3s ease;
+}
+
+#Home_notify_number.Home_notify_active{
+    top: 19%;
+    right: 10.5%;
+}
+
+#Home_chat_empty{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#Home_p_empty{
+    color: var(--APP_COLOR);
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: bolder;    
+    padding: 0.6%;
+    border-radius: 5px;
+    box-shadow: 10px 5px 20px rgb(0, 0, 0,0.125);
+
+}
+
+.Home_contact{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
+    border-radius: 5px;
+    width: 100%;
+    height: 20%;
+    min-height: 8vh;
+}
+
+#Home_unread_message{
+    position: absolute;
+    right: 5%;
+    font-size: smaller;
+    background-color: var(--APP_COLOR);
+    color: aliceblue;
+    padding: 0.2%;
+    border-radius: 50%;
+    font-family: sans-serif;
+    width: 1%;
+    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.Home_friendprofile{
+    background-color:rgb(149, 202, 248);
+    border-radius: 50%;
+    width: 3.5%;
+    margin-left: 1%;
+    height: 85%;
+}
+
+.Home_friendname{
+    width: 70%;
+    padding-left: 1%;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: medium;
+}
+
+.active_home_icon{
+    background-color: rgb(241, 244, 247,0.478);
+    padding: 60%;
+    border-radius: 50%;
+}
+
+.HomeComponent_icon{
+    position: absolute;
+    right: 3%;
+    font-size: 1.5rem;
+    padding: 0.7%;
+    border-radius: 50%;
+    color: var(--APP_COLOR);
+}
+
+.Home_notificon{
+    border: 1px var(--APP_COLOR) solid;
+    border-radius: 5px;
+    font-size: 1.8rem;
+    box-shadow: 1px 1px 10px rgb(0, 0, 0,0.125);
+}
+
+#Home_cancel{
+    position: absolute;
+    right: 15%;
+    padding: 0.7%;
+}
+#Home_accept{
+    position: absolute;
+    right: 8%;
+    padding: 0.6%;
+    color: rgb(199, 245, 130);
+}
+
+
+@media(min-width:1000px){
+
+    .Home_contact{
+        max-height: 10vh;
+    }
+
+}
+
+@media(max-width:768px){
+    #Home_Main{
+        width: 100%;
+    }
+
+    #Home_plus{
+        bottom: 15%;
+        border-radius: 50%;
+        padding: 2%;
+        right: 10%;
+    }
+
+    #Home_profile{
+        width: 10.5%;
+        height: 65%;
+    }
+
+    #Home_p_empty{
+        font-size: medium;
+        padding: 2%;
+    }
+
+    .Home_contact{
+        padding-top: 1.3%;
+        padding-bottom: 1.3%;
+        max-height: 8vh;
+    }
+    #Home_unread_message{
+        font-size: x-small;
+        padding: 1.3%;
+        width: 3%;
+    }
+
+    .Home_friendprofile{
+        width: 15%;
+        margin-left: 5%;
+        height: 90%;
+    }
+
+    .Home_friendname{
+        padding-left: 5%;
+        user-select: none;
+    }
+
+    #Home_search{
+        left: 30%;
+    }
+
+    #Home_searchBar{
+        left: 28%;
+        padding: 3%;
+        width: 45%;
+        padding-left: 8%;
+    }
+
+    #Home_options{
+        font-size: larger;
+        width: 50%;
+    }   
+
+    .options{
+        padding: 5%;
+    }
+
+    .HomeComponent_icon{
+        right: 10%;
+        padding: 2%;
+    }
+
+    #Home_cancel{
+        right: 25%;
+    }
+
+
+    #Home_notify_number{
+        font-size: 10px;
+        padding: 1%;
+        right: 8.5%;
+    }
+
+    #Home_notify_number.Home_notify_active{
+        right: 5.5%;
+    }
+
+}

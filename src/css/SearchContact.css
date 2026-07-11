@@ -1,0 +1,116 @@
+
+.Search_segment{
+    position: relative;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    gap: 1rem;
+}
+
+#Search_inputs{
+    padding: 1%;
+    width: 20%;
+    border-radius: 25px;
+    border: none;
+    padding-left: 3%;
+}
+
+.Search_icon{
+    position: absolute;
+    left: 38%;
+    font-size: larger;
+    color: var(--APP_COLOR);
+}
+
+#searchIcon{
+    background-color: var(--APP_COLOR);
+    padding: 0.7%;
+    border-radius: 50%;
+    font-size: x-large;
+    color: aliceblue;
+}
+
+#searchIcon:active{
+    filter: grayscale(50%);
+}
+
+#Search_p{
+    padding: 1%;
+    border-radius: 5px;
+    font-size: larger;
+    font-weight: bolder;
+    font-family: sans-serif;
+    box-shadow: -1px -1px 20px rgb(0,0,0,0.100);
+
+}
+
+#Search_contact{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 0.8%;
+    padding-bottom: 0.8%;
+    border-radius: 5px;
+    width: 90%;
+    height: 10%;
+    min-height: 8vh;
+}
+
+#Search_profile{
+    background-color:rgb(149, 202, 248);
+    border-radius: 50%;
+    width: 3.5%;
+    margin-left: 1%;
+    height: 70%;
+}
+
+#Search_friendname{
+    width: 70%;
+    padding-left: 1%;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: medium;
+}
+
+#Search_plus{
+    position: absolute;
+    font-size: xx-large;
+    right: 8%;
+    color: var(--APP_COLOR);
+}
+
+#Search_plus{
+    filter: grayscale(50%);
+}
+
+@media(max-width:768px){
+
+    #Search_p{
+        padding: 2%;
+        font-size: medium;
+    }
+
+    #Search_inputs{
+        padding: 3%;
+        width: 50%;
+        padding-left: 10%;
+    }
+
+    .Search_icon{
+        left: 17%;
+    }
+
+    #searchIcon{
+        padding: 3%;
+        font-size: 1.2rem;
+    }
+
+    #Search_profile{
+        width: 15%;
+        height: 65%;
+    }
+}

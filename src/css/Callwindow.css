@@ -1,0 +1,120 @@
+
+
+#Call_imgContainer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2%;
+    width: 100%;
+    height: 28%;
+}
+
+#Call_section{
+    display: flex;
+    gap: 1rem;
+}
+
+#Call_ImgDiv{
+    background-color: grey;
+    width: 9%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#Call_phone{
+    font-size: larger;
+    color: #0097A7;
+}
+
+#Call_name{
+    color: #0097A7;
+    font-size: larger;
+    font-family: sans-serif;
+    font-weight: bolder;
+}
+
+#Call_number{
+    font-family: sans-serif;
+    font-size: larger;
+    font-weight: 600;
+} 
+
+#Call_infoP{
+    font-size: larger;
+    font-family: sans-serif;
+    color: cadetblue;
+    font-weight: bolder;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#Call_footer{
+    position: fixed;
+    bottom: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.Call_icon{
+    background-color: rgb(161, 239, 43);
+}
+
+#Call_MakeCall{
+    transition: all 0.2s ease;
+    font-size: xx-large;
+    padding: 2%;
+    color: aliceblue;
+    border-radius: 50%;
+}
+
+#Call_Makecall_p{
+    font-family: sans-serif;
+    color: var(--APP_COLOR);
+    font-weight: bolder;
+}
+
+#Call_Makecall.break{
+    pointer-events: none;
+    filter: grayscale(50%);
+}
+
+.callVideo{
+    background-color: red;
+}
+
+.callPhone{
+    background-color: red;
+    transform: rotateZ(133deg);
+}
+
+@media(max-width:768px){
+
+    #Call_ImgDiv{
+        width: 36%;
+    }
+
+    #Call_MakeCall{
+        padding: 5%;
+    }
+}
+

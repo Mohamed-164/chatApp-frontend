@@ -1,0 +1,147 @@
+
+#pop-msg{
+    position: fixed;
+    display: flex;
+    gap: 0.7rem;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    font-family: sans-serif;
+    text-wrap: nowrap;
+}
+
+#pop-msg._white{
+    background-color: #36454F;
+}
+
+#pop-msg._dark{
+    background-color: rgba(245, 248, 249, 0.658);
+}
+
+#delete_confirm,#Pass_tab{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 40%;
+    height: 40%;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 30%;
+    z-index: 50;
+    border-radius: 10px;
+    font-family: sans-serif;
+    font-size: larger;
+    gap: 2rem;
+}
+
+#delete_buttons{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#yes{
+    border-radius: 5px;
+    padding: 5%;
+    width: 30%;
+    border: none;
+    color: aliceblue;
+    font-family: sans-serif;
+    font-weight: bolder;
+    background-color: red;  
+}
+
+#no{
+    border-radius: 5px;
+    padding: 5%;
+    width: 30%;
+    border: none;
+    color: aliceblue;
+    font-family: sans-serif;
+    font-weight: bolder;
+    background-color: rgb(121, 183, 28);  
+}
+
+#yes:active,#no:active{
+    filter: grayscale(70%);
+}
+
+#close{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: xx-large;
+}
+
+#pass_tab{
+    background-color: aliceblue;
+    padding: 1%;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+}
+
+#pass_p{
+    text-align: center;
+}
+
+#spass{
+    font-size: large
+}
+
+#Enter{
+    padding: 2%;
+    width: 20%;
+    border-radius: 5px;
+    font-family: sans-serif;
+    color: aliceblue;
+    font-weight: bold;
+    border: none;
+    background-color: var(--APP_COLOR);
+}
+
+#Enter:active{
+    filter: grayscale(60%);
+}
+
+
+@media(max-width:768px){
+
+    #pop-msg{
+        font-size: small;
+    }
+
+    #spass{
+        font-size: small;
+    }
+
+    #delete_confirm,#Pass_tab{
+        width: 90%;
+        height: 30%;
+        font-size: large;
+        font-weight: bold;
+    }
+
+    #pass_p{
+        font-size: medium;
+        font-weight: 100;
+    }
+
+    #pass_tab{
+        padding: 1.5%;
+        width: 70%;
+        border-radius: 2px;
+    }
+
+    #delete_buttons{
+        width: 75%;
+    }
+
+}
