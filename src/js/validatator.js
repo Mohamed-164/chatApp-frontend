@@ -36,7 +36,7 @@ export function checkExistsContact(id, arr) {
 
 export function getContact(id,arr){
     const friend = arr.find(
-        element => element.number === id
+        element => element.number == id
     );
     return friend;
 }
