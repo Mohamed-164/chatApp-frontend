@@ -2,7 +2,6 @@
 import '../css/Home.css';
 import '../css/Profile.css';
 import '../css/Blockedlist.css'
-import axios from 'axios';
 import { useContext } from 'react';
 import { Dataprovider } from './App';
 import { FaArrowLeft } from "react-icons/fa6";

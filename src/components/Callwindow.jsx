@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import '../css/Callwindow.css';
 import { FaArrowLeft } from "react-icons/fa6";
 import { MdPersonOutline } from "react-icons/md";
-import { MdMailOutline } from "react-icons/md";
 import { MdOutlineLocalPhone } from "react-icons/md";
 import { LuVideo } from "react-icons/lu";
 import { Dataprovider } from './App';

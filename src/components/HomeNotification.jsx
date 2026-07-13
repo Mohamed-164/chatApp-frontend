@@ -1,5 +1,4 @@
 
-import axios from "axios";
 import { FcCancel } from "react-icons/fc";
 import { FaCheck } from "react-icons/fa6";
 import { useContext, useEffect, useState } from "react";
@@ -8,7 +7,7 @@ import { Dataprovider } from "./App";
 
 export default function HomeNotification({check,search}){
 
-    const{BASE_URL,DATA,setData,showpopup} = useContext(Dataprovider);
+    const{BASE_URL,DATA,setData,showpopup,URLsubmit} = useContext(Dataprovider);
 
     const list = DATA.requests;
 
@@ -29,24 +28,21 @@ export default function HomeNotification({check,search}){
         try {
                 
             const res = await (accept ?
-            axios.post(
-                `${BASE_URL}/request/addfriend`
-                ,{
-                myID:DATA.number,
-                friendID:item.number
-            })
+
+                URLsubmit("POST","/request/addfriend",{
+                    myID:DATA.number,
+                    friendID:item.number
+                })
 
             :
-            axios.delete(
-                `${BASE_URL}/request/rejectfriend`
-                ,{
+                URLsubmit("DELETE","/request/rejectfriend",{
                     data: {
                         myID: DATA.number,
                         friendID: item.number
                     }
-            })
+                })
             
-        )
+            )
         
             if(res.status == 200){
                 setData(prev => ({

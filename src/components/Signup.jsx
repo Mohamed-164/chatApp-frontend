@@ -1,17 +1,16 @@
 
 import '../css/Authenticate.css'
-import axios from 'axios';
 import { MdPersonOutline } from "react-icons/md";
 import { MdMailOutline } from "react-icons/md";
 import { MdOutlineLocalPhone } from "react-icons/md";
 import { LuLockKeyhole } from "react-icons/lu";
-import { useEffect, useState ,useRef, useContext} from 'react';
+import { useRef, useContext} from 'react';
 import { validateName,validateMail,validatePassword,validatePhone} from '../js/validatator';
 import { Dataprovider } from './App';
 
 export default function Signup({signup,setSignup}){
 
-    const {BASE_URL,showpopup,URLsubmit,setPopUp} = useContext(Dataprovider);
+    const {showpopup,URLsubmit,setPopUp} = useContext(Dataprovider);
 
     const DEFAULT_PNAME = "For Example : MS Dhoni";
     const DEFAULT_PMAIL = "For Example : msdhoni@gmail.com";
@@ -70,16 +69,16 @@ export default function Signup({signup,setSignup}){
     async function submitData(){
         disablebtn();
         const SUCCESS = await submit();
-        if(SUCCESS == 201){
+        if(SUCCESS === 201){
             enablebtn();
             setSignup(false);
             showpopup("signed up successfully");
-        }else if(SUCCESS == 401){
+        }else if(SUCCESS === 401){
             STATUS.current.textContent = "User with this phone number already exists"
             STATUS.current.style.color = "red";
             enablebtn();
             showpopup("Already exists");
-        }else if(SUCCESS == 400){
+        }else if(SUCCESS === 400){
             STATUS.current.textContent = "Please enter valid credentials";
             STATUS.current.style.color = "red"; 
             enablebtn();

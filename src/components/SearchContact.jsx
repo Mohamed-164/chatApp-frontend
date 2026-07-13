@@ -1,7 +1,6 @@
 
 import '../css/Profile.css';
 import '../css/SearchContact.css';
-import axios from 'axios';
 import { Dataprovider } from "./App";
 import { GoPlus } from "react-icons/go";
 import { RiSearchLine } from "react-icons/ri";
@@ -12,7 +11,7 @@ import { useContext, useRef, useState } from 'react';
 
 export default function SearchContact({setPlus}){
 
-    const {BASE_URL,DATA,showpopup,URLsubmit} = useContext(Dataprovider);
+    const {DATA,showpopup,URLsubmit} = useContext(Dataprovider);
     
     const [showPlus,setShowPlus] = useState(true);
 
@@ -24,7 +23,7 @@ export default function SearchContact({setPlus}){
         const PHONE = document.getElementById('Search_inputs').value;
         const {ExistsFriend,friendData} = checkExistsContact(PHONE,DATA.friends);
         
-        if(DATA.number == PHONE || ExistsFriend){
+        if(DATA.number === Number(PHONE) || ExistsFriend){
 
 
             const data = {
@@ -38,7 +37,7 @@ export default function SearchContact({setPlus}){
             setShowPlus(false);
 
             return 800;
-        }else if(PHONE == "" || isNaN(Number(PHONE)) || !/^\d{10}$/.test(PHONE)){
+        }else if(PHONE === "" || isNaN(Number(PHONE)) || !/^\d{10}$/.test(PHONE)){
             return 400;
         }else{
 
@@ -67,13 +66,13 @@ export default function SearchContact({setPlus}){
 
         const SUCCESS = await submit();
 
-        if(SUCCESS == 404){
+        if(SUCCESS === 404){
            STATUS.current.textContent = "User not found"; 
            STATUS.current.style.color = "#0097A7"; 
-        }else if(SUCCESS == 400){
+        }else if(SUCCESS === 400){
             STATUS.current.textContent = "Enter a valid number";
             STATUS.current.style.color = "red";
-        }else if(SUCCESS == 409){
+        }else if(SUCCESS === 409){
             setShowPlus(false);
         }else if(SUCCESS!== 800 && SUCCESS !== 200){
             STATUS.current.textContent = "There is a server error soon we solve the issue"; 
@@ -91,7 +90,7 @@ export default function SearchContact({setPlus}){
             }
         );
 
-        if(res.status == 200){
+        if(res.status === 200){
             setShowPlus(false);
             showpopup("request sended");
         }

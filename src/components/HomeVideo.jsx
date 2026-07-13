@@ -14,7 +14,7 @@ export default function HomeVideo({list,setFriendprofile,check,search,setMakeCal
         <>
           { 
           
-            list.length == 0?
+            list.length === 0?
 
               <div id="Home_chat_empty">
                 <p id="Home_p_empty">Make friends to video call</p>
@@ -25,7 +25,7 @@ export default function HomeVideo({list,setFriendprofile,check,search,setMakeCal
             list.filter((item)=>{
                 if(checkUserBlocked(item.number,DATA.blockedlist)){
                   return false;
-                }else if(search == ""){
+                }else if(search === ""){
                   return true;
                 }else{
                   let Name = item.name;

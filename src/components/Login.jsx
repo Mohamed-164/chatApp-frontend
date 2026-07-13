@@ -1,6 +1,5 @@
 
 import '../css/Authenticate.css';
-import axios from 'axios';
 import { MdOutlineLocalPhone } from "react-icons/md";
 import { LuLockKeyhole } from "react-icons/lu";
 import { useContext, useRef } from 'react';

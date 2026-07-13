@@ -22,7 +22,7 @@ import Settings from './Settings';
 
 export default function Home({logout}) {
 
-    const {defaultdata,DATA,setChatCache,setValidated,setData,showpopup} = useContext(Dataprovider);
+    const {defaultdata,DATA,setChatCache,setValidated,showpopup} = useContext(Dataprovider);
     
     const list = DATA.friends;
     const[search,setsearch] = useState("");

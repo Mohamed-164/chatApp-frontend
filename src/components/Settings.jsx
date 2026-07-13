@@ -23,11 +23,10 @@ import ChangePassword from './ChangePassword';
 import Deactivate from './Deactivate';
 import About from './About';
 import { Dataprovider } from './App';
-import axios from 'axios';
 
 export default function Settings({setSettings}){
 
-    const{BASE_URL,DATA,setData,URLsubmit,showpopup} = useContext(Dataprovider);
+    const{DATA,setData,URLsubmit,showpopup} = useContext(Dataprovider);
 
     const [blockedlist,setBlockedList] = useState(false);
     const [editprofile,setEditProfile] = useState(false);
@@ -75,6 +74,8 @@ export default function Settings({setSettings}){
 
     async function setVisibility() {
 
+
+        setVisibleLoad(true);
 
         setData((prev)=>({
             ...prev,
@@ -130,7 +131,7 @@ export default function Settings({setSettings}){
                 <div id='Settings_middle'>
 
                     <div className='Setting_options'
-                        onClick={setTheme}
+                        onClick={setTheme} style={{pointerEvents: themeload?"none":"auto"}}
                     >
                         <IoColorPaletteOutline className='Settings_icon'/>
                         <p className='Settings_p'>Theme</p>
@@ -148,7 +149,7 @@ export default function Settings({setSettings}){
                         </div>
                     </div>
                     <div className='Setting_options'
-                        onClick={setVisibility}
+                        onClick={setVisibility} style={{pointerEvents: visibleload?"none":"auto"}}
                     >
                         {
                             DATA.visibility === "SHOW" ?

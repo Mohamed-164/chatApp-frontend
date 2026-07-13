@@ -5,11 +5,10 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { validatePassword } from '../js/validatator';
 import { useContext, useEffect, useRef } from 'react';
 import { Dataprovider } from './App';
-import axios from 'axios';
 
 export default function ChangePassword({setChangePassword,submitRequest}){
 
-    const{DATA,BASE_URL,showpopup,setPopUp} = useContext(Dataprovider);
+    const{DATA,showpopup,setPopUp} = useContext(Dataprovider);
 
     const newpass = useRef();
 

@@ -36,7 +36,7 @@ export function checkExistsContact(id, arr) {
 
 export function getContact(id,arr){
     const friend = arr.find(
-        element => element.number == id
+        element => element.number === Number(id)
     );
     return friend;
 }
@@ -44,7 +44,7 @@ export function getContact(id,arr){
 export function checkUserBlocked(id,arr){
     
     const friend = arr.find(
-        element => element.number === id
+        element => element.number === Number(id)
     );
 
     return friend !== undefined

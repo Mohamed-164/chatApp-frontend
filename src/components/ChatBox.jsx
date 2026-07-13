@@ -10,12 +10,11 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { Dataprovider } from './App';
 import Profile from './Profile';
 import Callwindow from './Callwindow';
-import axios from 'axios';
 import { checkUserBlocked } from '../js/validatator';
 
 export default function Chatbox({metadata}){
     
-    const {BASE_URL,defaultdata,DATA,setData,
+    const {defaultdata,DATA,setData,
             chatCache,setChatCache,sendMessagetoUser,
             showpopup,URLsubmit,stompClient,chatting
         } = useContext(Dataprovider);
@@ -114,7 +113,7 @@ export default function Chatbox({metadata}){
     async function setReadedLog() {
         const STATUS = await submitData("POST","/modify","/readedMessage",friendId);
 
-        if(STATUS == 200){
+        if(STATUS === 200){
             setData(prev => ({
                 ...prev,
                 friends: prev.friends.map(friend =>
@@ -210,6 +209,10 @@ export default function Chatbox({metadata}){
                     }
                 );
             break;
+
+            default :
+                console.warn("Invalid method to http");
+            break;
         }
 
         return res.status;
@@ -219,7 +222,7 @@ export default function Chatbox({metadata}){
     async function blockFriend() {
         const STATUS = await submitData("PUT","/modify","/blockuser",friendId);
 
-        if(STATUS == 200){
+        if(STATUS === 200){
             setData(prev => ({
                 ...prev,
                 blockedlist : [...prev.blockedlist,metadata.data]
@@ -232,7 +235,7 @@ export default function Chatbox({metadata}){
     async function unblockFriend() {
         const STATUS = await submitData("PUT","/modify","/unblockuser",friendId);
 
-        if(STATUS == 200){
+        if(STATUS === 200){
             setData(prev => ({
                 ...prev,
                 blockedlist : prev.blockedlist.filter(
@@ -247,7 +250,7 @@ export default function Chatbox({metadata}){
     async function removeFriend() {
         const STATUS = await submitData("DELETE","/modify","/removefriend",friendId);
 
-        if(STATUS == 200){
+        if(STATUS === 200){
             setData(prev =>({
                 ...prev,
                 friends : prev.friends.filter(
@@ -263,7 +266,7 @@ export default function Chatbox({metadata}){
     async function deleteChat() {
         const STATUS = await submitData("DELETE","/modify","/deletechat",friendId);
 
-        if(STATUS == 200){
+        if(STATUS === 200){
             if(chatCache[friendId]){
                 setChatCache(prev => ({
                     ...prev,
@@ -412,7 +415,7 @@ export default function Chatbox({metadata}){
                 {
                     messageData.map((obj,index) => (
                         <div key={index} className='Chat_section'
-                            id={obj.sender == DATA.number?"Chat_me":"Chat_friend"}
+                            id={obj.sender === DATA.number?"Chat_me":"Chat_friend"}
                         >
                             <p className="Chat_p" >{obj.message}</p>
                         </div>
