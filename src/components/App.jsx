@@ -52,7 +52,7 @@ const Dataprovider = createContext();
     useEffect(()=>{
       if(!validated) return;
 
-      showpopup("logged in");
+      showpopup("welcome back");
 
       stompClient = new Client({
           brokerURL:WEBSOCKET_URL,
