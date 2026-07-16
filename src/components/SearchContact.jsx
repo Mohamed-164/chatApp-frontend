@@ -14,6 +14,7 @@ export default function SearchContact({setPlus}){
     const {DATA,showpopup,URLsubmit} = useContext(Dataprovider);
     
     const [showPlus,setShowPlus] = useState(true);
+    const [loading,setLoading] = useState(false);
 
     const[SEARCHDATA,setSearchData] = useState(null);
     const STATUS = useRef();
@@ -60,23 +61,33 @@ export default function SearchContact({setPlus}){
         }
     }
 
+    function setStatus(msg,color){
+
+        if(STATUS.current != null){
+            STATUS.current.textContent = msg; 
+            STATUS.current.style.color = color; 
+        }
+
+    }
 
 
     async function submitData() {
 
+        removeStatus();
+        setLoading(true);
         const SUCCESS = await submit();
 
         if(SUCCESS === 404){
-           STATUS.current.textContent = "User not found"; 
-           STATUS.current.style.color = "#0097A7"; 
+            setLoading(false);
+            setStatus("User not found","#0097A7");
         }else if(SUCCESS === 400){
-            STATUS.current.textContent = "Enter a valid number";
-            STATUS.current.style.color = "red";
+            setLoading(false);
+            setStatus("Enter a valid number","red");
         }else if(SUCCESS === 409){
             setShowPlus(false);
         }else if(SUCCESS!== 800 && SUCCESS !== 200){
-            STATUS.current.textContent = "There is a server error soon we solve the issue"; 
-            STATUS.current.style.color = "#1a6bf7"
+            setLoading(false);
+            setStatus("There is a server error soon we solve the issue","#1a6bf7");
         }
     }
 
@@ -103,14 +114,16 @@ export default function SearchContact({setPlus}){
         const STATUS = await addRequest(SEARCHDATA.number);
 
         if(STATUS > 400){
-            alert("There is a internal server error soon we solve it");
+            showpopup("server error");
         }
         
     }
 
 
     function removeStatus(){
-        STATUS.current.textContent = "";
+        if(STATUS.current != null){
+            STATUS.current.textContent = "";
+        }
     }
 
 
@@ -129,6 +142,16 @@ export default function SearchContact({setPlus}){
             />
             <RiSearchLine id='searchIcon' onClick={submitData}/>
         </div>
+        {
+            loading?
+            <p id='Search_dots'>
+                <span className='dot'>.</span>
+                <span className='dot'>.</span>
+                <span className='dot'>.</span>
+            </p>
+            :
+            <></>
+        }
         <p ref={STATUS} id='Search_p'></p>
         {
             SEARCHDATA !== null?

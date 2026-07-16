@@ -2,13 +2,15 @@
 import '../css/Authenticate.css';
 import { MdOutlineLocalPhone } from "react-icons/md";
 import { LuLockKeyhole } from "react-icons/lu";
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Dataprovider } from './App';
 
 export default function Login({signup,setSignup,setToken}){
 
     
     const {BASE_URL,setData,setValidated,showpopup,URLsubmit,setPopUp} = useContext(Dataprovider);
+
+    const [loading,setLoading] = useState(false);
 
     const STATUS = useRef();
 
@@ -59,6 +61,7 @@ export default function Login({signup,setSignup,setToken}){
             enableBtn();
         }else if(SUCCESS === 200){
             setPopUp({show : true,msg : "logging in..."});
+            setLoading(true);
             setValidated(true);
         }else if(SUCCESS === 409){
             STATUS.current.textContent = "someone using your account";
@@ -96,7 +99,12 @@ export default function Login({signup,setSignup,setToken}){
         <div>
             <input className='Authen_submit' type="submit" value="LOGIN" ref={loginbtn} onClick={submitData}/>
             <p className='Authen_p' ref={STATUS}></p><br></br>   
-            <p>Don't have an account ?<a href="#" onClick={()=>{setSignup(true)}}>Sign up</a></p>
+            {
+                loading?
+                <></>
+                :
+                <p>Don't have an account ?<a href="#" onClick={()=>{setSignup(true)}}>Sign up</a></p>
+            }
         </div>
         </>
     );

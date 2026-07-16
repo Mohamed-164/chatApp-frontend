@@ -50,9 +50,18 @@ const Dataprovider = createContext();
     const videoCall = useRef();
 
     useEffect(()=>{
+      if(validated && socketConnected){
+        showpopup("Welcome back");
+      }
+    },[socketConnected])
+
+
+    useEffect(()=>{
       if(!validated) return;
 
-      showpopup("welcome back");
+      if(!socketConnected){
+        setPopUp({show : true,msg : "loading..."});
+      }
 
       stompClient = new Client({
           brokerURL:WEBSOCKET_URL,

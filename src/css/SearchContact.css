@@ -37,6 +37,15 @@
     filter: grayscale(50%);
 }
 
+#Search_dots{
+    color: var(--APP_COLOR);
+    font-size: larger;
+    font-weight: bolder;
+    text-align: center;
+    align-content: center;
+    width: 30%;
+}
+
 #Search_p{
     padding: 1%;
     border-radius: 5px;
