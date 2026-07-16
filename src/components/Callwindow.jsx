@@ -119,7 +119,13 @@ export default function Callwindow({metadata}){
 
                 <div id='Call_imgContainer'>
                     <div id="Call_ImgDiv" className='profile_parent'>
-                        <img src={metadata.data.profile_url? metadata.data.profile_url : "./defaultProfile.png"} alt="" />
+                        <img src={metadata.data.profile_url? 
+                            metadata.data.profile_url : "./defaultProfile.png"} 
+                            alt="" 
+                            onError={(e)=>{
+                                e.target.src = "./defaultProfile.png"
+                            }}
+                        />
                     </div>
                         <p id='Call_name'>{metadata.data.name}</p>
                     <div id='Call_section'>

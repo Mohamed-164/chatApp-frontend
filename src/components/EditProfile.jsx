@@ -184,7 +184,7 @@ export default function EditProfile({setEditProfile,submitRequest}){
                         }else if(validateName(value)){
                             e.target.nextElementSibling.textContent = "";
                         }else{
-                            e.target.nextElementSibling.textContent = "Name should contains only letter and 3 or above characters";
+                            e.target.nextElementSibling.textContent = "Name should contains only letters,Above 3 and less than 20 characters";
                             e.target.nextElementSibling.style.color = "red";
                         }
                     }}

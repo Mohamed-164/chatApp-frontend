@@ -12,10 +12,10 @@ export default function Signup({signup,setSignup}){
 
     const {showpopup,URLsubmit,setPopUp} = useContext(Dataprovider);
 
-    const DEFAULT_PNAME = "For Example : MS Dhoni";
-    const DEFAULT_PMAIL = "For Example : msdhoni@gmail.com";
-    const DEFAULT_NUMBER = "Number not start with (0,1,2,3,4,5)";
-    const DEFAULT_PASSWORD = "password must use combination of alphanumeric";
+    const DEFAULT_PNAME = "e.g. Dhoni";
+    const DEFAULT_PMAIL = "e.g. msdhoni@gmail.com";
+    const DEFAULT_NUMBER = "e.g. 10-digits";
+    const DEFAULT_PASSWORD = "e.g. @Dhoni123&%$2";
     const DEFAULT_CONFIRMPASSWORD = "Retype again to confirm";
 
     let NAME = true;
@@ -110,7 +110,7 @@ export default function Signup({signup,setSignup}){
     function BlurName(e){
         if(NAME && e.target.value.length < 3){
             NAME = false;
-            showError("Name atleast have more than 3 characters",e);
+            showError("username atleast have more than 3 characters",e);
         }
         OnBlur(e,NAME);
     }
@@ -179,11 +179,16 @@ export default function Signup({signup,setSignup}){
             defaultmsg(DEFAULT_PNAME,e);    
         }
 
+        if(value.length > 20){
+            NAME = false;
+            showError("username too long".e);
+        }
+
         for (let i = 0; i < value.length; i++) {
             let char = value.charCodeAt(i);
             if ((char < 65 || char > 90) && (char < 97 || char > 122)) {
                 NAME = false;
-                showError("Name should only contain letters",e);
+                showError("usernaame should only contain letters",e);
                 break;
             }else{
                 NAME = true;
@@ -256,7 +261,7 @@ export default function Signup({signup,setSignup}){
                 }else if(value.startsWith('0') || value.startsWith('1') || value.startsWith('2') ||
                     value.startsWith('3') || value.startsWith('4') || value.startsWith('5')){
                     NUM = false;
-                    showError("Indian standard number doesn't start with "+value.charAt(i),e);
+                    showError("Don't start number with "+value.charAt(i),e);
                     break;
                 }else{
                     NUM = true;

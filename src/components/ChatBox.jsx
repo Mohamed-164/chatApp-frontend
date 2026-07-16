@@ -10,7 +10,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { Dataprovider } from './App';
 import Profile from './Profile';
 import Callwindow from './Callwindow';
-import { checkUserBlocked } from '../js/validatator';
+import { checkUserBlocked, reduceName } from '../js/validatator';
 
 export default function Chatbox({metadata}){
     
@@ -326,7 +326,13 @@ export default function Chatbox({metadata}){
                         });
                     }}
                 >
-                    <img src={metadata.data.profile_url? metadata.data.profile_url : "./defaultProfile.png"} alt="" />
+                    <img src={metadata.data.profile_url? 
+                        metadata.data.profile_url : "./defaultProfile.png"} 
+                        alt="" 
+                        onError={(e)=>{
+                            e.target.src = "./defaultProfile.png"
+                        }}
+                    />
                 </div>
                 <div id='Chat_name'>
                     <p  className='Chat_head'
@@ -338,7 +344,7 @@ export default function Chatbox({metadata}){
                         })}}
 
                     >
-                        {metadata.data.name}
+                        {reduceName(metadata.data.name,12)}
                     </p>
                     {   
                         typing?

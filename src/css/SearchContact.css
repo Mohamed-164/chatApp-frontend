@@ -60,7 +60,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     padding-top: 0.8%;
     padding-bottom: 0.8%;
     border-radius: 5px;
@@ -89,7 +88,7 @@
     position: absolute;
     font-size: xx-large;
     right: 8%;
-    color: var(--APP_COLOR);
+    color: #05cde3;
 }
 
 #Search_plus{
@@ -119,7 +118,14 @@
     }
 
     #Search_profile{
+        position: absolute;
+        left: 5%;
         width: 15%;
         height: 65%;
+    }
+
+    #Search_friendname{
+        position: absolute;
+        left: 25%;
     }
 }

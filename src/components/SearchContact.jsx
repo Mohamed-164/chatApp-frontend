@@ -34,6 +34,7 @@ export default function SearchContact({setPlus}){
                 profile_url : (ExistsFriend ? friendData.profile_url : DATA.profile_url)
             }
 
+            setLoading(false);
             setSearchData(data);
             setShowPlus(false);
 
@@ -55,6 +56,7 @@ export default function SearchContact({setPlus}){
                     setSearchData(null);
                 }
                 if(res.status === 200){
+                    setLoading(false);
                     setShowPlus(true);
                 }
             return res.status;  
@@ -73,6 +75,7 @@ export default function SearchContact({setPlus}){
 
     async function submitData() {
 
+        setSearchData(null);
         removeStatus();
         setLoading(true);
         const SUCCESS = await submit();

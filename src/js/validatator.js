@@ -2,7 +2,7 @@
 
 export function validateName(name){
 
-    return  name.length >= 3 && /^[A-Za-z ]+$/.test(name);
+    return  name.length >= 3 &&  name.length <= 20 && /^[A-Za-z ]+$/.test(name);
 }
 
 export function validateMail(mail) {
@@ -20,6 +20,16 @@ export function validatePassword(pass) {
     let hasSymbol = /[^A-Za-z0-9]/.test(pass);
 
     return pass.length >= 8 && hasUpper && hasLower && hasNumber && hasSymbol;
+}
+
+export function reduceName(name,range){
+
+    if(name.length > range){
+        return name.substring(0,range)+"...";
+    }
+
+    return name;
+
 }
 
 export function checkExistsContact(id, arr) {

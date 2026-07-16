@@ -110,7 +110,13 @@ export default function CallRequest({callerdata,controller,setCallerData,setInco
             <main className={DATA.theme === "LIGHT"?'bg_white' : 'bg_dark'} id="Request_main">
                 <div id='Call_imgContainer'>
                     <div id="Call_ImgDiv" className='profile_parent'>
-                        <img src={callerdata.data.profile_url? callerdata.data.profile_url : "./defaultProfile.png"} alt="" />
+                        <img src={callerdata.data.profile_url? 
+                        callerdata.data.profile_url : "./defaultProfile.png"} 
+                        alt="" 
+                        onError={(e)=>{
+                            e.target.src = "./defaultProfile.png"
+                        }}
+                        />
                     </div>
                     <p className={DATA.theme === "LIGHT"?"p_white":"p_dark"} id='Call_name'>{userdata.name}</p>
                     <div id='Call_section'>

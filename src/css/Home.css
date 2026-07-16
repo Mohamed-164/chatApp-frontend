@@ -273,7 +273,7 @@ html{
     font-size: 1.5rem;
     padding: 0.7%;
     border-radius: 50%;
-    color: var(--APP_COLOR);
+    color: #05cde3;
 }
 
 .Home_notificon{
@@ -283,16 +283,46 @@ html{
     box-shadow: 1px 1px 10px rgb(0, 0, 0,0.125);
 }
 
+.request_div{
+    border-radius: 10px;
+}
+
+#Home_accept{
+    right: 15%;
+    position: absolute;
+    padding: 0.7%;
+    background-color: var(--APP_COLOR);
+    color: aliceblue;
+}
+
+#Home_accept:active{
+    filter: grayscale(70%);
+}
+
 #Home_cancel{
     position: absolute;
-    right: 15%;
-    padding: 0.7%;
-}
-#Home_accept{
-    position: absolute;
     right: 8%;
-    padding: 0.6%;
-    color: rgb(199, 245, 130);
+    padding: 0.7%;
+    color: argb(54, 69, 79);
+    background-color: rgb(207, 212, 216);
+}
+
+#Home_cancel:active{
+    filter: grayscale(70%);
+}
+
+#Home_cancel.cancel_dark{
+    color: aliceblue;
+    background-color: rgb(54, 69, 79);
+}
+
+#Home_cancel.cancel_white{
+    color: rgb(54, 69, 79);
+    background-color: rgb(207, 212, 216);
+}
+
+.request_p{
+    font-family: sans-serif;
 }
 
 
@@ -373,8 +403,18 @@ html{
         padding: 2%;
     }
 
+    #Home_accept{
+        right: 20%;
+        padding: 2%;
+    }
+
     #Home_cancel{
-        right: 25%;
+        padding: 2%;
+        right: 2%;
+    }
+
+    .request_p{
+        font-size: small;
     }
 
 

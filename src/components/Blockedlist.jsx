@@ -58,7 +58,11 @@ export default function Blockedlist({setBlockedList}){
                     <div key={index} className={`Home_contact 
                         ${DATA.theme === "LIGHT" ?'contact_white':'contact_dark'}`}>
                         <div className='Home_friendprofile profile_parent'>
-                        <img src="./defaultProfile.png" alt="" />
+                        <img src="./defaultProfile.png" alt="" 
+                            onError={(e)=>{
+                                e.target.src = "./defaultProfile.png"
+                            }}
+                        />
                         </div>
                         <p className={`Home_friendname ${DATA.theme === "LIGHT"?"p_white":"p_dark"}`}>{item.name}</p>
                         <div id='unblock_div'>

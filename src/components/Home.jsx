@@ -44,8 +44,15 @@ export default function Home({logout}) {
       video : false,
       data : defaultdata,
     });
+
+    const searchIcon = useRef();
+
+    const [searchOpen,setSearchOpen] = useState(false);
     
     const menu = useRef();
+
+    const [menuOpen,setMenuOpen] = useState(false);
+
     const Input = useRef();
     
     const[homeComponent,setHomeComponent] = useState([true,false,false,false]);
@@ -54,12 +61,21 @@ export default function Home({logout}) {
     const[settings,setSettings] = useState(false);
 
     function dropdown(){
-      menu.current.classList.toggle("active");
+      if(menuOpen){
+        setMenuOpen(false);
+      }else{
+        setMenuOpen(true);
+      }
     }
 
-    function ToggleInput(e){
+    function ToggleInput(){
+      if(searchOpen){
+        setSearchOpen(false);
+      }else{
+        setSearchOpen(true);
+      }
       Input.current.classList.toggle("active");
-      e.currentTarget.classList.toggle("Home_searchActive");
+      searchIcon.current.classList.toggle("Home_searchActive");
     }
 
     function searchFilter(e){
@@ -96,17 +112,30 @@ export default function Home({logout}) {
           :
         profile.viewDB? <Profile metadata={profile}/>
         :
-        <main className={DATA.theme === "LIGHT"?'bg_white' : 'bg_dark'} id='Home_Main'>
+        <main className={DATA.theme === "LIGHT"?'bg_white' : 'bg_dark'} id='Home_Main'
+          onClick={(e)=>{
+
+            if(searchOpen && Input.current.classList.contains('active') && 
+                Input.current !== e.target
+              ){
+              ToggleInput();
+            }
+
+            if(menuOpen && !menu.current.contains(e.target)){
+              setMenuOpen(false);
+            }
+          }}
+        >
           <div className='Home_layout' id='Home_header'>
             <p id='Home_Headname'>Vibely</p>
-            <RiSearchLine id='Home_search' onClick={ToggleInput}/>
+            <RiSearchLine id='Home_search' onClick={ToggleInput} ref={searchIcon}/>
             <input type="text" id='Home_searchBar' placeholder='search contact'
               onChange={searchFilter}
               ref={Input}
             />
             <BsThreeDotsVertical className='Chat_icon' id='Chat_settings' onClick={dropdown}/>
           </div>
-          <div id='Home_options' ref={menu}>
+          <div className={menuOpen ? 'active' : ''} id='Home_options' ref={menu}>
 
             <div className='options'
               onClick={()=>{
