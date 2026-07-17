@@ -303,8 +303,6 @@ html{
     position: absolute;
     right: 8%;
     padding: 0.7%;
-    color: argb(54, 69, 79);
-    background-color: rgb(207, 212, 216);
 }
 
 #Home_cancel:active{
@@ -404,13 +402,13 @@ html{
     }
 
     #Home_accept{
-        right: 20%;
+        right: 24%;
         padding: 2%;
     }
 
     #Home_cancel{
         padding: 2%;
-        right: 2%;
+        right: 5%;
     }
 
     .request_p{

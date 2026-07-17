@@ -246,9 +246,8 @@ const Dataprovider = createContext();
 
       stompClient.onWebSocketClose = ()=>{
         showpopup("connection losed");
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
+        logout();
+        window.location.reload();
       }
 
 

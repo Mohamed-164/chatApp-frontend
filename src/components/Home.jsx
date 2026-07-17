@@ -104,7 +104,7 @@ export default function Home({logout}) {
       <>
       { settings ? <Settings setSettings={setSettings}/>
         :
-        plus? <SearchContact setPlus={setPlus}/>
+        plus? <SearchContact setPlus={setPlus} setHomeComponent={setHomeComponent}/>
           :
         makeCall.call? <Callwindow metadata={makeCall}/>
           :

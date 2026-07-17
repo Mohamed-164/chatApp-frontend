@@ -35,13 +35,10 @@ export function reduceName(name,range){
 export function checkExistsContact(id, arr) {
 
     const friend = arr.find(
-        element => element.number === id
+        element => element.number === Number(id)
     );
 
-    return {
-        ExistsFriend: friend !== undefined,
-        friendData: friend
-    };
+    return [friend !== undefined,friend];
 }
 
 export function getContact(id,arr){

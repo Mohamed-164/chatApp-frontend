@@ -117,7 +117,7 @@ export default function HomeNotification({check,search}){
                         />
                         </div>
                         <p className={`Home_friendname ${DATA.theme === "LIGHT"?"p_white":"p_dark"}`}>
-                            {reduceName(item.name)}
+                            {reduceName(item.name,12)}
                         </p>
 
                         <div 

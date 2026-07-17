@@ -95,6 +95,28 @@
     filter: grayscale(50%);
 }
 
+#requested{
+    position: absolute;
+    right: 5%;
+    padding: 0.7%;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+
+#requested:active{
+    filter: grayscale(70%);
+}
+
+#requested.r_white{
+    color: argb(54, 69, 79);
+    background-color: rgb(207, 212, 216);
+}
+
+#requested.r_dark{
+    color: aliceblue;
+    background-color: rgb(54, 69, 79);
+}
+
 @media(max-width:768px){
 
     #Search_p{
@@ -127,5 +149,10 @@
     #Search_friendname{
         position: absolute;
         left: 25%;
+    }
+
+    #requested{
+        padding: 3%;
+        font-size: 0.9rem;
     }
 }

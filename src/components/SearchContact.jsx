@@ -5,38 +5,58 @@ import { Dataprovider } from "./App";
 import { GoPlus } from "react-icons/go";
 import { RiSearchLine } from "react-icons/ri";
 import { FaArrowLeft } from "react-icons/fa6";
-import { checkExistsContact } from '../js/validatator';
+import { checkExistsContact, reduceName } from '../js/validatator';
 import { MdOutlineLocalPhone } from "react-icons/md";
 import { useContext, useRef, useState } from 'react';
 
-export default function SearchContact({setPlus}){
+export default function SearchContact({setPlus,setHomeComponent}){
 
     const {DATA,showpopup,URLsubmit} = useContext(Dataprovider);
     
-    const [showPlus,setShowPlus] = useState(true);
+    const [showRequest,setRequest] = useState(true);
+    const [requested,setRequested] = useState(false);
+    const [requestLoading,setRequestLoading] = useState(false);
+
     const [loading,setLoading] = useState(false);
 
     const[SEARCHDATA,setSearchData] = useState(null);
     const STATUS = useRef();
 
+    const[existsRequest,setExistsRequest] = useState(false);
+
     async function submit() {
 
         const PHONE = document.getElementById('Search_inputs').value;
-        const {ExistsFriend,friendData} = checkExistsContact(PHONE,DATA.friends);
+        const [ExistsFriend,friendData] = checkExistsContact(PHONE,DATA.friends);
+        const [ExistsRequest,requestData] = checkExistsContact(PHONE,DATA.requests);
+
+        if(ExistsRequest){setExistsRequest(true)}
         
-        if(DATA.number === Number(PHONE) || ExistsFriend){
+        if(DATA.number === Number(PHONE) || ExistsFriend || ExistsRequest){
 
 
             const data = {
-                number : (ExistsFriend ? friendData.number : DATA.number),
-                name : (ExistsFriend ? friendData.name : DATA.name),
-                mail : (ExistsFriend ? friendData.mail : DATA.mail),
-                profile_url : (ExistsFriend ? friendData.profile_url : DATA.profile_url)
+                number : (
+                        ExistsFriend ? friendData.number :
+                        ExistsRequest ? requestData.number : DATA.number
+                    ),
+                name : (
+                        ExistsFriend ? friendData.name : 
+                        ExistsRequest ? requestData.name : DATA.name
+                    ),
+                mail : (
+                        ExistsFriend ? friendData.mail : 
+                        ExistsRequest ? requestData.mail : DATA.mail
+                    ),
+                profile_url : (
+                        ExistsFriend ? friendData.profile_url : 
+                        ExistsRequest ? requestData.profile_url : DATA.profile_url
+                    )
             }
 
             setLoading(false);
             setSearchData(data);
-            setShowPlus(false);
+            setRequest(false);
 
             return 800;
         }else if(PHONE === "" || isNaN(Number(PHONE)) || !/^\d{10}$/.test(PHONE)){
@@ -57,7 +77,7 @@ export default function SearchContact({setPlus}){
                 }
                 if(res.status === 200){
                     setLoading(false);
-                    setShowPlus(true);
+                    setRequest(true);
                 }
             return res.status;  
         }
@@ -87,39 +107,53 @@ export default function SearchContact({setPlus}){
             setLoading(false);
             setStatus("Enter a valid number","red");
         }else if(SUCCESS === 409){
-            setShowPlus(false);
+            setLoading(false);
+            setRequested(true);
         }else if(SUCCESS!== 800 && SUCCESS !== 200){
             setLoading(false);
-            setStatus("There is a server error soon we solve the issue","#1a6bf7");
+            setStatus("server error soon the issue will be solved","#1a6bf7");
         }
     }
 
 
-    async function addRequest(id) {
+    async function addRequest() {
         
-        const res = await URLsubmit("POST","/search/addfriend",
+        const res = await URLsubmit("POST","/search/addRequest",
             {
                 myID:DATA.number,
-                friendID:id
+                friendID:SEARCHDATA.number
             }
         );
 
         if(res.status === 200){
-            setShowPlus(false);
+            setRequestLoading(false);
+            setRequest(false);
+            setRequested(true);
             showpopup("request sended");
+        }else if(res.status > 400){
+            setRequestLoading(false);
+            showpopup("server error");
         }
-        return res.status;
 
     }
 
-    async function addFriend() {
+    async function removeRequest() {
+        const res = await URLsubmit("POST","/search/removeRequest",
+            {
+                myID:DATA.number,
+                friendID:SEARCHDATA.number
+            }
+        );
 
-        const STATUS = await addRequest(SEARCHDATA.number);
-
-        if(STATUS > 400){
+        if(res.status === 200){
+            setRequestLoading(false);
+            setRequest(true);
+            setRequested(false);
+            showpopup("request removed");
+        }else{
+            setRequestLoading(false);
             showpopup("server error");
         }
-        
     }
 
 
@@ -163,12 +197,68 @@ export default function SearchContact({setPlus}){
                 <div id='Search_profile' className='profile_parent'>
                     <img src="./defaultProfile.png" alt="" />
                 </div>
-                <p className={DATA.theme === "LIGHT"?"p_white":"p_dark"} id="Search_friendname">{SEARCHDATA.name}</p>
+                <p className={DATA.theme === "LIGHT"?"p_white":"p_dark"} id="Search_friendname">
+                    {
+                       reduceName(SEARCHDATA.name,10)
+                    }
+                </p>
                 {
-                    showPlus?<GoPlus id='Search_plus' 
-                        onClick={addFriend}
-                    />
+                    existsRequest ?
+                    <div id='requested' 
+                        style={{backgroundColor:"#0097A7",color:"aliceblue"}}
+                        onClick={()=>{
+                            setPlus(false);
+                            setHomeComponent([false,false,false,true]);
+                        }}
+                    >
+                        <p>{"view request >>"}</p>
+                    </div>
+                    :
+                    showRequest && !requested?
+                    <div id='requested' 
+                        style={{backgroundColor:"#0097A7",color:"aliceblue"}}
+                        onClick={()=>{
+                            if(!requestLoading){
+                                addRequest();
+                                setRequestLoading(true);
+                            }
+                        }}
+                    >
+                        {
+                            requestLoading?
+                            <p>
+                                <span className='request_dot'>.</span>
+                                <span className='request_dot'>.</span>
+                                <span className='request_dot'>.</span>
+                            </p>
+                            :
+                            <p>request</p>
+                        }
+                    </div>
                         :
+                    requested?
+                    <div id='requested' 
+                        className={DATA.theme === "LIGHT"?"r_white":"r_dark"}
+                        onClick={()=>{
+                            if(!requestLoading){
+                                removeRequest();
+                                setRequestLoading(true);
+                            }
+
+                        }}
+                    >
+                        {
+                            requestLoading?
+                            <p>
+                                <span className='request_dot'>.</span>
+                                <span className='request_dot'>.</span>
+                                <span className='request_dot'>.</span>
+                            </p>
+                            :
+                            <p>requested</p>
+                        }
+                    </div>
+                    :
                     <></>
                 }
             </div>
