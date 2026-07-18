@@ -181,12 +181,14 @@ export default function Signup({signup,setSignup}){
 
         if(value.length > 20){
             NAME = false;
-            showError("username too long".e);
+            showError("username too long",e);
+            return;
         }
 
         for (let i = 0; i < value.length; i++) {
             let char = value.charCodeAt(i);
-            if ((char < 65 || char > 90) && (char < 97 || char > 122)) {
+            
+            if ((char !== 32) && (char < 65 || char > 90) && (char < 97 || char > 122)) {
                 NAME = false;
                 showError("usernaame should only contain letters",e);
                 break;
@@ -227,7 +229,7 @@ export default function Signup({signup,setSignup}){
         for(let i = 0; i < usermail.length; i++){
 
             let char = value.charCodeAt(i);
-             if (((char < 65 || char > 90) && (char < 97 || char > 122))&&(char < 48 || char > 57)) {
+             if ((char != 46) && ((char < 65 || char > 90) && (char < 97 || char > 122))&&(char < 48 || char > 57)) {
                 MAIL = false;
                 showError("mailId should only have numbers and letters",e);
                 break;
