@@ -6,7 +6,7 @@ export function validateName(name){
 }
 
 export function validateMail(mail) {
-    return mail.length > 0 && /^[a-zA-Z0-9]+@gmail\.com$/.test(mail);
+    return mail.length > 0 && /^[a-zA-Z0-9.]+@gmail\.com$/.test(mail);
 }
 
 export function validatePhone(phone) {
